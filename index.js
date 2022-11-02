@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const connectDB = require('./config/database');
 
 const configExpress = require('./config/express')
 
@@ -12,6 +13,8 @@ const app = express();
 
 app.listen(PORT, async () => {
   configExpress(app);
+
+  await connectDB();
 
   routes(app);
 
