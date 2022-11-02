@@ -1,10 +1,11 @@
 const Router = require('express');
 
-const {getAllClientsHandler } = require('./clients.controller');
+const {getAllClientsHandler, createClientHandler } = require('./clients.controller');
 
 const router = Router();
 
 router.get('/', getAllClientsHandler);
+router.post('/', createClientHandler);
 
 
 

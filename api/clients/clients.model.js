@@ -26,26 +26,26 @@ const clientSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  adress: {
+  address: {
     type: String,
     required: true,
   },
   contactType: {
     type: String,
-    enum: ["CLIENT", "ADMIN"],
+    enum: ["CLIENT", "PARTNER"],
     default: "CLIENT",
   },
-  Departament: {
+  departament: {
     type: String,
     default: "Bolivar",
     required: true,
   },
-  City: {
+  city: {
     type: String,
     default: "Cartagena de Indias",
     required: true,
   },
-});
+}, { timestamps: true });
 
 const Client = mongoose.model('Client', clientSchema);
 
