@@ -12,9 +12,13 @@ function createClient(client){
   return Client.create(client);
 }
 
+function updateClient(id, client) {
+  return  Client.findByIdAndUpdate(id, client, {new: true})
+}
+
 module.exports = {
   getAllClients,
   getSingleClient,
   createClient,
-
+  updateClient,
 }

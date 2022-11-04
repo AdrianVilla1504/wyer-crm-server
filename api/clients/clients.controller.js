@@ -2,6 +2,7 @@ const {
   getAllClients,
   getSingleClient,
   createClient,
+  updateClient,
 } = require("./client.services");
 
 async function getAllClientsHandler(req, res) {
@@ -23,7 +24,6 @@ async function getSingleClientHandler(req, res) {
     }
 
     return res.json(client);
-
   } catch (error) {
     return res.status(500).json({ error });
   }
@@ -40,8 +40,21 @@ async function createClientHandler(req, res) {
   }
 }
 
+async function updateClientHandler(req, res) {
+  const { id } = req.params;
+  const clientData = req.body;
+
+  try {
+    const client = await updateClient(id, clientData);
+    return res.status(200).json(client);
+  } catch (error) {
+    return res.stauts(500).json({ error });
+  }
+}
+
 module.exports = {
   getAllClientsHandler,
   getSingleClientHandler,
   createClientHandler,
+  updateClientHandler,
 };
