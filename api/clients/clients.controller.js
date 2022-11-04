@@ -3,6 +3,7 @@ const {
   getSingleClient,
   createClient,
   updateClient,
+  deleteClient,
 } = require("./client.services");
 
 async function getAllClientsHandler(req, res) {
@@ -52,9 +53,26 @@ async function updateClientHandler(req, res) {
   }
 }
 
+async function deleteClientHandler(req, res) {
+  const { id } = req.params;
+  try {
+    const client = await deleteClient(id);
+
+    if (!client) {
+      return res.status(400).json({ nessage: "Client not found" });
+    }
+
+    return res.json(client);
+  } catch (error) {
+    console.log("error", error);
+    return res.status(500).json({ error });
+  }
+}
+
 module.exports = {
   getAllClientsHandler,
   getSingleClientHandler,
   createClientHandler,
   updateClientHandler,
+  deleteClientHandler,
 };

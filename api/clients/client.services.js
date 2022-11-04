@@ -16,9 +16,14 @@ function updateClient(id, client) {
   return  Client.findByIdAndUpdate(id, client, {new: true})
 }
 
+function deleteClient(id) {
+  return Client.findByIdAndRemove(id);
+}
+
 module.exports = {
   getAllClients,
   getSingleClient,
   createClient,
   updateClient,
+  deleteClient
 }
