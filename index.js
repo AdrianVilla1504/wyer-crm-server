@@ -22,4 +22,4 @@ app.listen(PORT, async () => {
   routes(app);
 
   console.log(`This server is running on http://localhost:${PORT}`);
-} )
+})

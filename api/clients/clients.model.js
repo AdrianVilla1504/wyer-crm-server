@@ -4,12 +4,10 @@ const clientSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    unique: true,
   },
   lastName: {
     type: String,
     required: true,
-    unique: true,
   },
   email: {
     type: String,
@@ -32,8 +30,8 @@ const clientSchema = new mongoose.Schema({
   },
   contactType: {
     type: String,
-    enum: ["CLIENT", "PARTNER"],
-    default: "CLIENT",
+    default: "Cliente",
+    required: true,
   },
   departament: {
     type: String,
@@ -45,6 +43,11 @@ const clientSchema = new mongoose.Schema({
     default: "Cartagena de Indias",
     required: true,
   },
+  sex: {
+    type: String,
+    default: "No especificado",
+    required: true,
+  }
 }, { timestamps: true });
 
 const Client = mongoose.model('Client', clientSchema);
